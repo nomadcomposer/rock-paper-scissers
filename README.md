@@ -1,8 +1,4 @@
 # rock-paper-scissers
-Perfect! Here’s an even more minimal `README.md` tailored for a **console-only** Rock Paper Scissors game written in JavaScript:
-
----
-
 # Rock Paper Scissors (Console Version) 🪨📄✂️
 
 A simple Rock Paper Scissors game playable in the browser console using plain JavaScript.
