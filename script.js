@@ -17,24 +17,42 @@ function getHumanChoice () {
     return choice;
 }
 
-function playRound (humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase()
-    computerChoice = computerChoice.toLowerCase()
+function playGame (){
+    let j = 1;
 
-    if (humanChoice === computerChoice) {
-        return `It's a draw! You both chose ${computerChoice.toUpperCase()}`;
-    } else if ((humanChoice === 'scissors' && computerChoice === 'paper') ||
-    (humanChoice === 'paper' && computerChoice === 'rock') ||
-    (humanChoice === 'rock' && computerChoice === 'scissors')) {
-        humanScore += 1;
-        return `You win! ${humanChoice.toUpperCase()} beats ${computerChoice.toUpperCase()}!`;
+    const playRound = function(humanChoice, computerChoice) {
+        humanChoice = humanChoice.toLowerCase()
+        computerChoice = computerChoice.toLowerCase()
+    
+        if (humanChoice === computerChoice) {
+            return `It's a draw! You both chose ${computerChoice.toUpperCase()}`;
+        } else if ((humanChoice === 'scissors' && computerChoice === 'paper') ||
+        (humanChoice === 'paper' && computerChoice === 'rock') ||
+        (humanChoice === 'rock' && computerChoice === 'scissors')) {
+            humanScore += 1;
+            return `You win! ${humanChoice.toUpperCase()} beats ${computerChoice.toUpperCase()}!`;
+        } else {
+            computerScore += 1;
+            return `You lose! ${computerChoice.toUpperCase()} beats ${humanChoice.toUpperCase()}!`;
+        }
+    }
+
+    while (j<=5) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(humanSelection, computerSelection));
+        j += 1;
+    }
+    
+    if (computerScore > humanScore) {
+        return `Awwn, you're the overall loser. You lost ${computerScore} to ${humanScore}. Why not try again?`
+    } else if (humanScore > computerScore) {
+        return `Yippee! You're the overrall winner. You won ${humanScore} to ${computerScore}! Play again and assert your dominance!`
     } else {
-        computerScore += 1;
-        return `You lose! ${computerChoice.toUpperCase()} beats ${humanChoice.toUpperCase()}!`
+        return "It was a draw...odd. We can't leave it like that, can we? Play again."
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+console.log(playGame());
 
-console.log(playRound(humanSelection, computerSelection));
+
